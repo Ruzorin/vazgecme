@@ -26,7 +26,7 @@ function speak(text, onEnd) {
   window.speechSynthesis.speak(u)
 }
 
-export default function DinlemeSimulatoru() {
+export default function DinlemeSimulatoru({ onScore }) {
   const [mode, setMode] = useState('menu') // menu | part1 | part2
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -125,7 +125,15 @@ export default function DinlemeSimulatoru() {
     if (mcqRevealed[qId]) return
     setMcqAnswers(p => ({ ...p, [qId]: optId }))
     setMcqRevealed(p => ({ ...p, [qId]: true }))
-  }, [mcqRevealed])
+    // Check if all MCQ items answered
+    const items = mcqData?.items || []
+    const newRevealed = { ...mcqRevealed, [qId]: true }
+    const newAnswers = { ...mcqAnswers, [qId]: optId }
+    if (items.every(i => newRevealed[i.id])) {
+      const correct = items.filter(i => i.options.find(o => o.id === newAnswers[i.id])?.correct).length
+      onScore?.('listening_mcq', { correct, total: items.length })
+    }
+  }, [mcqRevealed, mcqAnswers, mcqData, onScore])
 
   // ── Menu ──
   if (mode === 'menu' && !loading) {
@@ -214,7 +222,12 @@ export default function DinlemeSimulatoru() {
 
         <div className="flex gap-3">
           {!gapVerified && (
-            <button onClick={() => setGapVerified(true)} className="flex-1 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest cursor-pointer border" style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-neon-green)', borderColor: 'rgba(52,211,153,0.3)', background: 'rgba(52,211,153,0.04)' }}>✓ Cevapları Kontrol Et</button>
+            <button onClick={() => {
+              setGapVerified(true)
+              const gaps = gapData?.gaps || []
+              const correct = gaps.filter(g => (gapInputs[g.id] || '').trim().toLowerCase() === (g.answer || '').toLowerCase()).length
+              onScore?.('listening_gap', { correct, total: gaps.length })
+            }} className="flex-1 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest cursor-pointer border" style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-neon-green)', borderColor: 'rgba(52,211,153,0.3)', background: 'rgba(52,211,153,0.04)' }}>✓ Cevapları Kontrol Et</button>
           )}
           <button onClick={loadPart1} className="flex-1 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest cursor-pointer border" style={{ fontFamily: 'var(--font-mono)', color: '#a78bfa', borderColor: 'rgba(167,139,250,0.25)', background: 'rgba(167,139,250,0.04)' }}>⚡ Yeni Sınav (AI)</button>
           <button onClick={() => { window.speechSynthesis?.cancel(); setMode('menu') }} className="px-4 py-2.5 rounded-xl text-xs font-bold cursor-pointer border" style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-text-muted)', borderColor: 'var(--color-border-default)' }}>← Geri</button>

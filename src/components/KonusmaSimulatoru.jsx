@@ -5,7 +5,7 @@ import survivalData from '../data/survivalData.json'
 const SURVIVAL_PHRASES = survivalData.speakingCoach.survivalPhrases
 const STRESS_EVENTS = survivalData.presentationSimulator?.stressEvents || []
 
-export default function KonusmaSimulatoru() {
+export default function KonusmaSimulatoru({ onScore }) {
   const [phase, setPhase] = useState('menu') // menu | task1 | task2_prep | task2_speak | task3 | done
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -116,6 +116,11 @@ export default function KonusmaSimulatoru() {
       setPhase('task3')
     } catch { setDiscussionQs(['Which season do you think is the best for a holiday in your country? Discuss with your partner (Spring, Summer, Autumn, Winter).']); setPhase('task3') }
     finally { setLoading(false) }
+  }
+
+  const finishExam = () => {
+    onScore?.('speaking', { tasksCompleted: 3, panicCount })
+    setPhase('menu')
   }
 
   const fmt = (s) => `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`

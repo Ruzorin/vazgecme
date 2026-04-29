@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
 import { generateLanguageInUse } from '../services/aiEngine'
 
-export default function LanguageInUse() {
+export default function LanguageInUse({ onScore }) {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -35,7 +35,11 @@ export default function LanguageInUse() {
     setAnswers(p => ({ ...p, [gapId]: optId }))
   }, [submitted])
 
-  const handleSubmit = () => setSubmitted(true)
+  const handleSubmit = () => {
+    setSubmitted(true)
+    const correct = gaps.filter(g => g.options.find(o => o.id === answers[g.id])?.correct).length
+    onScore?.('grammar', { correct, total: gaps.length })
+  }
 
   const gaps = data?.gaps || []
   const allFilled = gaps.every(g => answers[g.id])

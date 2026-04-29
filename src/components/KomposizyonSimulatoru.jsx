@@ -15,7 +15,7 @@ function TimerDisplay({ seconds }) {
   )
 }
 
-export default function KomposizyonSimulatoru() {
+export default function KomposizyonSimulatoru({ onScore }) {
   const [topics, setTopics] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -74,6 +74,7 @@ export default function KomposizyonSimulatoru() {
         note: wordCount > 80 ? 'Good structure. Try adding more specific details and real-life examples to strengthen your arguments.' : 'Try to write more. Each paragraph should contain at least 3-4 sentences with clear topic sentences.',
       })
       setReviewState('done')
+      onScore?.('essay', { score: parseFloat(reviewData?.score || '5') })
     }, 3000)
   }
 

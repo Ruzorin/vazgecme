@@ -3,7 +3,7 @@ import survivalData from '../data/survivalData.json'
 
 const CARDS = survivalData.cyberVocab.cards
 
-export default function CyberVocabFlashcards() {
+export default function CyberVocabFlashcards({ onScore }) {
   const [idx, setIdx] = useState(0)
   const [flipped, setFlipped] = useState(false)
   const [animating, setAnimating] = useState(false)
@@ -22,7 +22,12 @@ export default function CyberVocabFlashcards() {
     setStats(s => remembered ? { ...s, got: s.got + 1 } : { ...s, forgot: s.forgot + 1 })
 
     setTimeout(() => {
-      if (idx + 1 >= CARDS.length) { setDone(true); setAnimating(false); return }
+      if (idx + 1 >= CARDS.length) {
+        setDone(true); setAnimating(false)
+        const finalStats = remembered ? { got: stats.got + 1, forgot: stats.forgot } : { got: stats.got, forgot: stats.forgot + 1 }
+        onScore?.('vocab', { reviewed: CARDS.length, remembered: finalStats.got, forgot: finalStats.forgot })
+        return
+      }
       setFlipped(false)
       setTimeout(() => { setIdx(i => i + 1); setAnimating(false) }, 350)
     }, 200)

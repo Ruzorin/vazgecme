@@ -83,7 +83,7 @@ const FALLBACK_TEXT2 = {
   ]
 }
 
-export default function OkumaSimulatoru() {
+export default function OkumaSimulatoru({ onScore }) {
   const [mode, setMode] = useState('menu') // menu | text1 | text2
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState(null)
@@ -118,7 +118,15 @@ export default function OkumaSimulatoru() {
     setAnswers(p => ({ ...p, [qId]: optId }))
     setRevealed(p => ({ ...p, [qId]: true }))
     setTimeout(() => setShowExplanation(p => ({ ...p, [qId]: true })), 500)
-  }, [revealed])
+    // Check if all answered for text1 score
+    const questions = data?.questions || []
+    const newRevealed = { ...revealed, [qId]: true }
+    const newAnswers = { ...answers, [qId]: optId }
+    if (mode === 'text1' && questions.every(q => newRevealed[q.id])) {
+      const correct = questions.filter(q => q.options.find(o => o.id === newAnswers[q.id])?.correct).length
+      onScore?.('reading_text1', { correct, total: questions.length })
+    }
+  }, [revealed, answers, data, mode, onScore])
 
   // ── Menu ──
   if (mode === 'menu' && !loading) {
@@ -364,7 +372,11 @@ export default function OkumaSimulatoru() {
         <div className="flex gap-3">
           {!headingChecked && (
             <button
-              onClick={() => setHeadingChecked(true)}
+              onClick={() => {
+                setHeadingChecked(true)
+                const correct = paraIds.filter(pId => headingAnswers[pId] === getCorrectHeading(pId)).length
+                onScore?.('reading_text2', { correct, total: 5 })
+              }}
               disabled={!paraIds.every(pId => headingAnswers[pId])}
               className="flex-1 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest cursor-pointer border-2 disabled:opacity-30 transition-all"
               style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-neon-green)', borderColor: 'rgba(52,211,153,0.3)', background: 'rgba(52,211,153,0.04)' }}>

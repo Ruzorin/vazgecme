@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useScoreTracker } from './hooks/useScoreTracker'
 import KomposizyonSimulatoru from './components/KomposizyonSimulatoru'
 import KonusmaSimulatoru from './components/KonusmaSimulatoru'
 import LanguageInUse from './components/LanguageInUse'
@@ -17,8 +18,51 @@ const MODULES = [
   { id: 'admin', label: 'Yönetim', icon: '⚙', color: '#64748b' },
 ]
 
+function QuickStats({ scores }) {
+  const totalAttempts = (scores.essay?.attempts || 0) +
+    (scores.speaking?.attempts || 0) +
+    (scores.grammar?.attempts || 0) +
+    (scores.reading_text1?.attempts || 0) +
+    (scores.reading_text2?.attempts || 0) +
+    (scores.listening_gap?.attempts || 0) +
+    (scores.listening_mcq?.attempts || 0)
+
+  const grammarPct = scores.grammar?.totalQuestions
+    ? Math.round((scores.grammar.totalCorrect / scores.grammar.totalQuestions) * 100) : null
+  const readPct = (scores.reading_text1?.totalQuestions || 0) + (scores.reading_text2?.totalQuestions || 0)
+    ? Math.round(((scores.reading_text1?.totalCorrect || 0) + (scores.reading_text2?.totalCorrect || 0)) / ((scores.reading_text1?.totalQuestions || 0) + (scores.reading_text2?.totalQuestions || 0)) * 100) : null
+  const listenPct = (scores.listening_gap?.totalQuestions || 0) + (scores.listening_mcq?.totalQuestions || 0)
+    ? Math.round(((scores.listening_gap?.totalCorrect || 0) + (scores.listening_mcq?.totalCorrect || 0)) / ((scores.listening_gap?.totalQuestions || 0) + (scores.listening_mcq?.totalQuestions || 0)) * 100) : null
+  const vocabTotal = (scores.vocab?.remembered || 0) + (scores.vocab?.forgot || 0)
+  const vocabPct = vocabTotal ? Math.round((scores.vocab.remembered / vocabTotal) * 100) : null
+
+  if (totalAttempts === 0) return null
+
+  return (
+    <div className="flex items-center gap-3 overflow-x-auto scrollbar-hide py-1">
+      <span className="text-[9px] uppercase tracking-widest shrink-0" style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-text-muted)' }}>
+        {totalAttempts} sınav
+      </span>
+      {grammarPct !== null && <StatPill label="LIU" pct={grammarPct} color="#f59e0b" />}
+      {readPct !== null && <StatPill label="Okuma" pct={readPct} color="#818cf8" />}
+      {listenPct !== null && <StatPill label="Dinleme" pct={listenPct} color="#ec4899" />}
+      {vocabPct !== null && <StatPill label="Kelime" pct={vocabPct} color="#a78bfa" />}
+    </div>
+  )
+}
+
+function StatPill({ label, pct, color }) {
+  return (
+    <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-full shrink-0" style={{ background: `${color}10`, border: `1px solid ${color}20` }}>
+      <span className="text-[8px] uppercase tracking-wider" style={{ fontFamily: 'var(--font-mono)', color }}>{label}</span>
+      <span className="text-[10px] font-bold" style={{ fontFamily: 'var(--font-mono)', color: pct >= 70 ? 'var(--color-neon-green)' : pct >= 40 ? '#f59e0b' : '#ef4444' }}>{pct}%</span>
+    </span>
+  )
+}
+
 function App() {
   const [activeModule, setActiveModule] = useState('essay')
+  const { scores, record, resetScores } = useScoreTracker()
   const current = MODULES.find(m => m.id === activeModule)
 
   return (
@@ -29,7 +73,7 @@ function App() {
       {/* Header */}
       <header className="relative z-10 border-b border-[var(--color-border-default)]" style={{ background: 'rgba(10,14,26,0.85)', backdropFilter: 'blur(12px)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, rgba(34,211,238,0.15), rgba(52,211,153,0.15))', border: '1px solid rgba(34,211,238,0.2)' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-[var(--color-neon-cyan)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
@@ -41,9 +85,12 @@ function App() {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full" style={{ border: '1px solid rgba(52,211,153,0.2)', background: 'rgba(52,211,153,0.05)' }}>
-              <span className="w-2 h-2 rounded-full bg-[var(--color-neon-green)] animate-pulse" />
-              <span className="text-[10px] font-bold uppercase tracking-widest" style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-neon-green)' }}>SİSTEM AKTİF</span>
+            <div className="flex items-center gap-3">
+              <QuickStats scores={scores} />
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full" style={{ border: '1px solid rgba(52,211,153,0.2)', background: 'rgba(52,211,153,0.05)' }}>
+                <span className="w-2 h-2 rounded-full bg-[var(--color-neon-green)] animate-pulse" />
+                <span className="text-[10px] font-bold uppercase tracking-widest" style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-neon-green)' }}>SİSTEM AKTİF</span>
+              </div>
             </div>
           </div>
 
@@ -68,13 +115,13 @@ function App() {
 
       {/* Main */}
       <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 flex-1 w-full">
-        {activeModule === 'essay' && <KomposizyonSimulatoru key="essay" />}
-        {activeModule === 'speaking' && <KonusmaSimulatoru key="speaking" />}
-        {activeModule === 'grammar' && <LanguageInUse key="grammar" />}
-        {activeModule === 'reading' && <OkumaSimulatoru key="reading" />}
-        {activeModule === 'listening' && <DinlemeSimulatoru key="listening" />}
-        {activeModule === 'vocab' && <CyberVocabFlashcards key="vocab" />}
-        {activeModule === 'admin' && <YonetimPaneli key="admin" />}
+        {activeModule === 'essay' && <KomposizyonSimulatoru key="essay" onScore={record} />}
+        {activeModule === 'speaking' && <KonusmaSimulatoru key="speaking" onScore={record} />}
+        {activeModule === 'grammar' && <LanguageInUse key="grammar" onScore={record} />}
+        {activeModule === 'reading' && <OkumaSimulatoru key="reading" onScore={record} />}
+        {activeModule === 'listening' && <DinlemeSimulatoru key="listening" onScore={record} />}
+        {activeModule === 'vocab' && <CyberVocabFlashcards key="vocab" onScore={record} />}
+        {activeModule === 'admin' && <YonetimPaneli key="admin" scores={scores} resetScores={resetScores} />}
       </main>
 
       {/* Footer */}
