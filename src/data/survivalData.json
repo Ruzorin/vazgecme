@@ -1,0 +1,422 @@
+{
+  "speakingCoach": {
+    "prompts": [
+      "What are the advantages of learning a second language?",
+      "Describe a difficult challenge you overcame.",
+      "What do you think about AI in education?",
+      "Should university education be free for everyone?",
+      "How has technology changed the way people communicate?",
+      "What is the most important invention of the 21st century?",
+      "Do you think social media does more harm than good?",
+      "Describe a person who has influenced your life significantly.",
+      "What would you change about the education system in your country?",
+      "Is it better to live in a big city or a small town? Why?"
+    ],
+    "survivalPhrases": [
+      "Well, let me think about it for a second...",
+      "That's a really interesting point...",
+      "To be honest, I haven't thought about that much before, but...",
+      "As far as I know...",
+      "If I have to guess, I would say that..."
+    ],
+    "profExam": {
+      "prepDuration": 60,
+      "speakDuration": 180,
+      "topics": [
+        {
+          "title": "Describe your favorite type of holiday",
+          "bullets": ["What kind of holiday it is and why you prefer it", "How it compares to other types of holidays", "The best holiday of this kind you have ever had"]
+        },
+        {
+          "title": "Talk about a skill you would like to master",
+          "bullets": ["What the skill is and why it interests you", "How learning it would change your daily life", "The biggest challenge you expect while learning it"]
+        },
+        {
+          "title": "Describe an important decision you made recently",
+          "bullets": ["What the decision was and why it was difficult", "Who or what influenced your choice", "Whether you are satisfied with the outcome and why"]
+        },
+        {
+          "title": "Talk about a technology that has changed how you work or study",
+          "bullets": ["What the technology is and when you started using it", "How it has improved your productivity", "Any disadvantages or risks you have noticed"]
+        },
+        {
+          "title": "Describe a place you visited that surprised you",
+          "bullets": ["Where the place is and why you went there", "What was different from what you expected", "Whether you would recommend it to others and why"]
+        }
+      ]
+    }
+  },
+  "grammarDebugger": {
+    "levels": [
+      {
+        "id": 1,
+        "tag": "CONDITIONALS",
+        "broken": "If I will have more RAM, I would run the server.",
+        "errorWord": "will have",
+        "options": [
+          { "id": "a", "text": "If I had more RAM...", "correct": true },
+          { "id": "b", "text": "If I have more RAM...", "correct": false },
+          { "id": "c", "text": "If I would have more RAM...", "correct": false }
+        ],
+        "explanation": "Second conditional requires past simple in the if-clause: \"If + subject + V2\"."
+      },
+      {
+        "id": 2,
+        "tag": "PASSIVE VOICE",
+        "broken": "The new application was release yesterday.",
+        "errorWord": "release",
+        "options": [
+          { "id": "a", "text": "was releasing", "correct": false },
+          { "id": "b", "text": "was released", "correct": true },
+          { "id": "c", "text": "was been released", "correct": false }
+        ],
+        "explanation": "Passive voice uses \"was/were + past participle (V3)\". Release → Released."
+      },
+      {
+        "id": 3,
+        "tag": "REPORTED SPEECH",
+        "broken": "Admin said that he will update the plugins.",
+        "errorWord": "will update",
+        "options": [
+          { "id": "a", "text": "would update", "correct": true },
+          { "id": "b", "text": "will be updating", "correct": false },
+          { "id": "c", "text": "is updating", "correct": false }
+        ],
+        "explanation": "Reported speech shifts tenses back: \"will\" becomes \"would\"."
+      },
+      {
+        "id": 4,
+        "tag": "TENSES",
+        "broken": "I am coding this project since 3 hours.",
+        "errorWord": "am coding",
+        "options": [
+          { "id": "a", "text": "was coding", "correct": false },
+          { "id": "b", "text": "have been coding", "correct": true },
+          { "id": "c", "text": "had coded", "correct": false }
+        ],
+        "explanation": "\"Since/for\" durations require Present Perfect Continuous: \"have been + V-ing\"."
+      },
+      {
+        "id": 5,
+        "tag": "GERUNDS / INFINITIVES",
+        "broken": "We must avoid to make basic syntax errors.",
+        "errorWord": "to make",
+        "options": [
+          { "id": "a", "text": "avoid making", "correct": true },
+          { "id": "b", "text": "avoid to making", "correct": false },
+          { "id": "c", "text": "avoid made", "correct": false }
+        ],
+        "explanation": "\"Avoid\" is always followed by a gerund (V-ing), never an infinitive."
+      },
+      {
+        "id": 6,
+        "tag": "PRESENT PERFECT CONTINUOUS",
+        "broken": "She works at that startup for two years now.",
+        "errorWord": "works",
+        "options": [
+          { "id": "a", "text": "has been working", "correct": true },
+          { "id": "b", "text": "is working", "correct": false },
+          { "id": "c", "text": "had worked", "correct": false }
+        ],
+        "explanation": "An action that started in the past and continues to the present with a duration marker (\"for\") requires Present Perfect Continuous: \"has/have been + V-ing\"."
+      },
+      {
+        "id": 7,
+        "tag": "PRESENT PERFECT CONTINUOUS",
+        "broken": "The server is running without a restart for 90 days.",
+        "errorWord": "is running",
+        "options": [
+          { "id": "a", "text": "was running", "correct": false },
+          { "id": "b", "text": "has been running", "correct": true },
+          { "id": "c", "text": "had been running", "correct": false }
+        ],
+        "explanation": "\"For 90 days\" signals ongoing duration up to the present. Use Present Perfect Continuous: \"has been running\"."
+      },
+      {
+        "id": 8,
+        "tag": "MODALS (ADVICE/OBLIGATION)",
+        "broken": "You must to configure the firewall before deployment.",
+        "errorWord": "must to configure",
+        "options": [
+          { "id": "a", "text": "must configure", "correct": true },
+          { "id": "b", "text": "must configuring", "correct": false },
+          { "id": "c", "text": "must to be configured", "correct": false }
+        ],
+        "explanation": "Modal verbs (must, should, can, etc.) are directly followed by the base form of the verb — never \"to + verb\"."
+      }
+    ]
+  },
+  "readingComprehension": {
+    "themes": [
+      {
+        "id": "tech",
+        "name": "Modern Technology",
+        "icon": "⚡",
+        "title": "The Rise of Smart Homes",
+        "text": "Over the past decade, smart home technology has become increasingly affordable and popular among homeowners. Devices such as voice-controlled assistants, smart thermostats, and automated lighting systems are now commonplace in many households. These devices connect to the internet and can be managed remotely through smartphone applications.\n\nProponents of smart homes argue that the technology significantly reduces energy consumption. For instance, a smart thermostat can learn a family's daily routine and automatically adjust the temperature when nobody is home, potentially cutting heating bills by up to 20 percent. Similarly, smart lighting can detect when a room is unoccupied and switch off the lights accordingly.\n\nHowever, critics raise concerns about privacy and security. Because these devices are constantly connected to the internet, they could be vulnerable to hacking. In 2023, a major security firm reported that over 40 percent of smart home devices had at least one critical security flaw. Despite these challenges, the smart home industry continues to expand rapidly, with experts predicting that by 2030, more than half of all homes in developed countries will feature some form of smart technology.",
+        "questions": [
+          {
+            "id": "q1",
+            "type": "MAIN IDEA",
+            "label": "Skimming",
+            "question": "What is the main idea of the passage?",
+            "options": [
+              { "id": "a", "text": "Smart home devices are too expensive for most people.", "correct": false },
+              { "id": "b", "text": "Smart home technology is growing in popularity but raises concerns about privacy.", "correct": true },
+              { "id": "c", "text": "Hacking is the biggest problem in modern technology.", "correct": false }
+            ],
+            "explanation": "The passage discusses both the benefits (energy savings, convenience) and the drawbacks (privacy/security risks) of smart home technology, making option B the most comprehensive summary of the main idea."
+          },
+          {
+            "id": "q2",
+            "type": "SPECIFIC DETAIL",
+            "label": "Scanning",
+            "question": "According to the text, how much can a smart thermostat reduce heating bills?",
+            "options": [
+              { "id": "a", "text": "Up to 40 percent", "correct": false },
+              { "id": "b", "text": "Up to 10 percent", "correct": false },
+              { "id": "c", "text": "Up to 20 percent", "correct": true }
+            ],
+            "explanation": "Paragraph 2 explicitly states: 'potentially cutting heating bills by up to 20 percent.' This is a direct scanning question — the answer is found verbatim in the text."
+          },
+          {
+            "id": "q3",
+            "type": "VOCABULARY",
+            "label": "Context Clues",
+            "question": "In the passage, the word 'commonplace' most likely means:",
+            "options": [
+              { "id": "a", "text": "Rare and unusual", "correct": false },
+              { "id": "b", "text": "Ordinary and widely found", "correct": true },
+              { "id": "c", "text": "Expensive and luxurious", "correct": false }
+            ],
+            "explanation": "The sentence says devices 'are now commonplace in many households,' which, combined with the context of becoming 'affordable and popular,' indicates something ordinary and widely found — not rare or expensive."
+          }
+        ]
+      },
+      {
+        "id": "honesty",
+        "name": "Honesty & Relationships",
+        "icon": "🤝",
+        "title": "The Cost of a Small Lie",
+        "text": "When Elena started her new job at a marketing firm, she wanted to impress her colleagues. During a team meeting, her manager asked if anyone had experience with a specific data analysis software. Without thinking, Elena raised her hand, even though she had never used the program before. She assumed she could learn it quickly over the weekend.\n\nHowever, the project deadline was much tighter than she had anticipated. By Wednesday, Elena was struggling to complete even the most basic tasks with the software. Her team members began to notice her difficulties, and the quality of the entire project was at risk. Eventually, she had to confess to her manager that she had exaggerated her skills.\n\nSurprisingly, her manager was not angry. Instead, he paired Elena with a senior colleague who helped her learn the fundamentals in just two days. The project was delivered on time, though Elena felt embarrassed. Later, her manager told her privately: 'It takes courage to admit a mistake. I would rather have an honest team member who asks for help than someone who pretends to know everything.' That conversation changed the way Elena approached her career from that point onward.",
+        "questions": [
+          {
+            "id": "q1",
+            "type": "MAIN IDEA",
+            "label": "Skimming",
+            "question": "What is the central message of this story?",
+            "options": [
+              { "id": "a", "text": "Lying about your skills at work always leads to getting fired.", "correct": false },
+              { "id": "b", "text": "Honesty and asking for help are more valued than pretending to be an expert.", "correct": true },
+              { "id": "c", "text": "Learning new software is easy if you have the right teacher.", "correct": false }
+            ],
+            "explanation": "The manager's quote at the end — 'I would rather have an honest team member who asks for help' — directly states the central message. The story arc moves from dishonesty → consequence → honesty → growth."
+          },
+          {
+            "id": "q2",
+            "type": "SPECIFIC DETAIL",
+            "label": "Scanning",
+            "question": "How long did it take Elena to learn the software fundamentals with help?",
+            "options": [
+              { "id": "a", "text": "Over the weekend", "correct": false },
+              { "id": "b", "text": "Two days", "correct": true },
+              { "id": "c", "text": "One week", "correct": false }
+            ],
+            "explanation": "Paragraph 3 states: 'a senior colleague who helped her learn the fundamentals in just two days.' This is a direct detail found through scanning."
+          },
+          {
+            "id": "q3",
+            "type": "VOCABULARY",
+            "label": "Context Clues",
+            "question": "The word 'exaggerated' in the text is closest in meaning to:",
+            "options": [
+              { "id": "a", "text": "Made something seem greater than it really is", "correct": true },
+              { "id": "b", "text": "Completely forgot about something", "correct": false },
+              { "id": "c", "text": "Carefully studied something", "correct": false }
+            ],
+            "explanation": "Elena said she had experience when she had none — she made her skills 'seem greater than they really were.' The context of confession and embarrassment confirms this meaning."
+          }
+        ]
+      },
+      {
+        "id": "travel",
+        "name": "Travel & Transport",
+        "icon": "✈️",
+        "title": "The Future of Urban Transportation",
+        "text": "Cities around the world are facing a transportation crisis. Traffic congestion costs the global economy an estimated 300 billion dollars annually in lost productivity and wasted fuel. In response, urban planners are exploring innovative solutions to reshape how people move within cities.\n\nOne promising development is the expansion of electric bus networks. Cities like Shenzhen in China have already converted their entire bus fleet to electric vehicles, reducing carbon emissions by more than 1.3 million tons per year. Meanwhile, European cities such as Amsterdam and Copenhagen have invested heavily in cycling infrastructure, creating dedicated bike lanes that have made cycling safer and more appealing to commuters.\n\nPerhaps the most ambitious idea is the concept of '15-minute cities,' where every essential service — schools, hospitals, shops, and workplaces — is accessible within a 15-minute walk or bike ride. Paris has been a pioneer in implementing this model, converting former car parking spaces into parks and pedestrian zones. Critics argue that this approach is only feasible in cities with existing dense infrastructure, but supporters believe it could dramatically improve quality of life and reduce pollution in urban areas.",
+        "questions": [
+          {
+            "id": "q1",
+            "type": "MAIN IDEA",
+            "label": "Skimming",
+            "question": "What is the passage primarily about?",
+            "options": [
+              { "id": "a", "text": "Why electric buses are better than traditional ones.", "correct": false },
+              { "id": "b", "text": "How cities are developing new transportation solutions to fight congestion and pollution.", "correct": true },
+              { "id": "c", "text": "The history of public transportation in European cities.", "correct": false }
+            ],
+            "explanation": "The passage covers multiple solutions (electric buses, cycling infrastructure, 15-minute cities) all addressing the central theme of urban transportation innovation. It is not limited to just electric buses or European history."
+          },
+          {
+            "id": "q2",
+            "type": "SPECIFIC DETAIL",
+            "label": "Scanning",
+            "question": "According to the text, how much does traffic congestion cost the global economy per year?",
+            "options": [
+              { "id": "a", "text": "300 billion dollars", "correct": true },
+              { "id": "b", "text": "1.3 million dollars", "correct": false },
+              { "id": "c", "text": "15 billion dollars", "correct": false }
+            ],
+            "explanation": "Paragraph 1 states: 'Traffic congestion costs the global economy an estimated 300 billion dollars annually.' The figure 1.3 million refers to tons of carbon emissions, not cost."
+          },
+          {
+            "id": "q3",
+            "type": "VOCABULARY",
+            "label": "Context Clues",
+            "question": "The word 'feasible' in the last paragraph most likely means:",
+            "options": [
+              { "id": "a", "text": "Dangerous and risky", "correct": false },
+              { "id": "b", "text": "Possible and practical to achieve", "correct": true },
+              { "id": "c", "text": "Popular among young people", "correct": false }
+            ],
+            "explanation": "Critics say the approach is 'only feasible in cities with existing dense infrastructure' — meaning it can only be practically achieved or implemented there. The word contrasts with limitations, indicating possibility."
+          }
+        ]
+      }
+    ]
+  },
+  "listeningSurvival": {
+    "scenarios": [
+      {
+        "id": "travel_plan",
+        "title": "The Changed Travel Plan",
+        "duration": 60,
+        "difficulty": "B1+",
+        "transcript": "So, I was originally planning to fly to Barcelona for my summer holiday. I had already booked the flights and everything. BUT then my friend called and said she had a free apartment in Lisbon. HOWEVER, the real problem was that the dates didn't match my flight booking. I tried to change the tickets, ACTUALLY, I spent almost three hours on the phone with the airline. In the end, I cancelled the Barcelona flights INSTEAD and bought new ones to Lisbon. It was more expensive, BUT the free accommodation saved me a lot of money overall. ACTUALLY, it turned out to be the best trip I've ever had.",
+        "trapWords": ["BUT", "HOWEVER", "ACTUALLY", "INSTEAD"],
+        "questions": [
+          {
+            "id": "q1",
+            "type": "DISTRACTOR TRAP",
+            "question": "Where did the speaker originally plan to go, and where did they end up going?",
+            "options": [
+              { "id": "a", "text": "Planned: Lisbon → Went: Barcelona", "correct": false },
+              { "id": "b", "text": "Planned: Barcelona → Went: Lisbon", "correct": true },
+              { "id": "c", "text": "Planned: Barcelona → Went: Barcelona", "correct": false }
+            ],
+            "explanation": "The speaker says 'originally planning to fly to Barcelona' BUT then changed to Lisbon. The trap is that both cities are mentioned — you must track which was the ORIGINAL plan vs. the ACTUAL destination."
+          },
+          {
+            "id": "q2",
+            "type": "DETAIL REVERSAL",
+            "question": "Why was the trip ultimately cheaper despite buying new flights?",
+            "options": [
+              { "id": "a", "text": "The airline gave a refund for the original flights.", "correct": false },
+              { "id": "b", "text": "The free accommodation in Lisbon offset the flight cost.", "correct": true },
+              { "id": "c", "text": "Flights to Lisbon were cheaper than to Barcelona.", "correct": false }
+            ],
+            "explanation": "The speaker explicitly states: 'the free accommodation saved me a lot of money overall.' Option C is a trap — the text says new flights were 'more expensive,' NOT cheaper."
+          },
+          {
+            "id": "q3",
+            "type": "ATTITUDE TRAP",
+            "question": "How did the speaker feel about the trip in the end?",
+            "options": [
+              { "id": "a", "text": "Disappointed because it cost more money.", "correct": false },
+              { "id": "b", "text": "Neutral — it was an average experience.", "correct": false },
+              { "id": "c", "text": "Very positive — it was the best trip ever.", "correct": true }
+            ],
+            "explanation": "The final sentence uses 'ACTUALLY, it turned out to be the best trip I've ever had.' The word ACTUALLY signals a contrast with the earlier frustration, revealing a strongly positive attitude."
+          }
+        ],
+        "memoPad": [
+          { "id": "m1", "label": "Original destination", "answer": "Barcelona", "hint": "City name" },
+          { "id": "m2", "label": "Final destination", "answer": "Lisbon", "hint": "City name" },
+          { "id": "m3", "label": "Hours spent on the phone", "answer": "3", "hint": "Number" },
+          { "id": "m4", "label": "What saved money overall", "answer": "free accommodation", "hint": "Two words" },
+          { "id": "m5", "label": "Speaker's final verdict on the trip", "answer": "best trip", "hint": "Two words" }
+        ]
+      },
+      {
+        "id": "job_interview",
+        "title": "The Unexpected Interview",
+        "duration": 55,
+        "difficulty": "B1+",
+        "transcript": "I applied for a marketing position at a tech company last month. They told me the interview would be on Friday at 2 PM. HOWEVER, on Thursday evening, they called and moved it to 9 AM the next morning. I was nervous because I hadn't finished preparing. ACTUALLY, I had only read half of the company report. BUT when I arrived, the interviewer was really friendly and made me feel comfortable. She asked about my previous experience, and INSTEAD of the difficult technical questions I expected, she focused on my teamwork skills. ACTUALLY, we spent most of the time discussing a group project I had done at university. In the end, I got the job, BUT I later found out I was the only candidate who showed up — the other two cancelled.",
+        "trapWords": ["HOWEVER", "ACTUALLY", "BUT", "INSTEAD"],
+        "questions": [
+          {
+            "id": "q1",
+            "type": "DISTRACTOR TRAP",
+            "question": "What time was the interview originally scheduled, and what time did it actually happen?",
+            "options": [
+              { "id": "a", "text": "Originally 9 AM → Changed to 2 PM", "correct": false },
+              { "id": "b", "text": "Originally 2 PM → Changed to 9 AM", "correct": true },
+              { "id": "c", "text": "Originally 2 PM → Stayed at 2 PM", "correct": false }
+            ],
+            "explanation": "The speaker says the interview was set for 'Friday at 2 PM,' HOWEVER it was 'moved to 9 AM.' Both times are mentioned — the trap tests whether you can track the change signaled by HOWEVER."
+          },
+          {
+            "id": "q2",
+            "type": "DETAIL REVERSAL",
+            "question": "What type of questions did the interviewer focus on?",
+            "options": [
+              { "id": "a", "text": "Difficult technical questions about marketing.", "correct": false },
+              { "id": "b", "text": "Questions about the candidate's salary expectations.", "correct": false },
+              { "id": "c", "text": "Teamwork skills and a university group project.", "correct": true }
+            ],
+            "explanation": "The trap word INSTEAD is the key: 'INSTEAD of the difficult technical questions I expected, she focused on my teamwork skills.' The expected answer (technical) is the distractor; the actual answer is teamwork."
+          },
+          {
+            "id": "q3",
+            "type": "ATTITUDE TRAP",
+            "question": "Why did the speaker actually get the job?",
+            "options": [
+              { "id": "a", "text": "Because they gave the best interview performance.", "correct": false },
+              { "id": "b", "text": "Because the other candidates cancelled their interviews.", "correct": true },
+              { "id": "c", "text": "Because they had the most marketing experience.", "correct": false }
+            ],
+            "explanation": "The final sentence reveals: 'I later found out I was the only candidate who showed up — the other two cancelled.' The word BUT signals this surprising contrast — the real reason wasn't skill, it was circumstance."
+          }
+        ],
+        "memoPad": [
+          { "id": "m1", "label": "Original interview time", "answer": "2 PM", "hint": "Time" },
+          { "id": "m2", "label": "Rescheduled interview time", "answer": "9 AM", "hint": "Time" },
+          { "id": "m3", "label": "Type of questions asked", "answer": "teamwork", "hint": "One word" },
+          { "id": "m4", "label": "What they discussed most", "answer": "group project", "hint": "Two words" },
+          { "id": "m5", "label": "Why speaker got the job", "answer": "others cancelled", "hint": "Two words" }
+        ]
+      }
+    ]
+  },
+  "presentationSimulator": {
+    "duration": 300,
+    "stressEvents": [
+      { "id": "e1", "icon": "⚠️", "type": "teacher", "severity": "high", "text": "The teacher looks at her watch..." },
+      { "id": "e2", "icon": "💬", "type": "teacher", "severity": "critical", "text": "Teacher interrupts: 'Could you give a more specific example for that?'" },
+      { "id": "e3", "icon": "🔊", "type": "environment", "severity": "medium", "text": "Someone in the back row drops a book loudly." },
+      { "id": "e4", "icon": "⚠️", "type": "teacher", "severity": "high", "text": "The teacher starts taking notes with a serious face." },
+      { "id": "e5", "icon": "💬", "type": "student", "severity": "critical", "text": "A student asks: 'I didn't understand that part, can you rephrase?'" },
+      { "id": "e6", "icon": "👀", "type": "environment", "severity": "medium", "text": "Two students start whispering to each other." },
+      { "id": "e7", "icon": "📱", "type": "environment", "severity": "low", "text": "Someone's phone starts buzzing on the desk." },
+      { "id": "e8", "icon": "💬", "type": "teacher", "severity": "critical", "text": "Teacher: 'Can you connect this point to the previous one?'" }
+    ],
+    "recoveryPhrases": [
+      "Well, as I was saying...",
+      "To clarify my point...",
+      "Let me rephrase that...",
+      "That's a great question, I think...",
+      "Coming back to my main argument...",
+      "To put it another way..."
+    ]
+  },
+  "cyberVocab": {
+    "cards": [
+      { "id": "v1", "word": "Crash", "turkish": "Çökmek", "gap": "The server ________ due to high traffic.", "full": "The server crashed due to high traffic." },
+      { "id": "v2", "word": "Affordable", "turkish": "Uygun fiyatlı", "gap": "Online courses have made education more ________.", "full": "Online courses have made education more affordable." },
+      { "id": "v3", "word": "Overcome", "turkish": "Üstesinden gelmek", "gap": "She managed to ________ all the obstacles.", "full": "She managed to overcome all the obstacles." },
+      { "id": "v4", "word": "Deadline", "turkish": "Son teslim tarihi", "gap": "We need to submit the report before the ________.", "full": "We need to submit the report before the deadline." },
+      { "id": "v5", "word": "Sustainable", "turkish": "Sürdürülebilir", "gap": "The company adopted ________ energy sources.", "full": "The company adopted sustainable energy sources." }
+    ]
+  }
+}

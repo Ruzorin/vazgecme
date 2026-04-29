@@ -1,0 +1,349 @@
+@import "tailwindcss";
+
+/* ========================================
+   ENGLISH SURVIVAL SYSTEM — Design Tokens
+   ======================================== */
+
+@theme {
+  /* Core palette: deep slate + neon accents */
+  --color-bg-primary: #0a0f1a;
+  --color-bg-secondary: #111827;
+  --color-bg-card: #1a2332;
+  --color-bg-input: #0d1421;
+  --color-border-default: #1e293b;
+  --color-border-focus: #22d3ee;
+  --color-border-glow: #06b6d4;
+
+  /* Neon accent system */
+  --color-neon-cyan: #22d3ee;
+  --color-neon-green: #34d399;
+  --color-neon-blue: #3b82f6;
+  --color-neon-purple: #a78bfa;
+
+  /* Text hierarchy */
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-text-accent: #22d3ee;
+
+  /* Badge colors */
+  --color-badge-bg: rgba(34, 211, 238, 0.12);
+  --color-badge-border: rgba(34, 211, 238, 0.35);
+  --color-badge-text: #22d3ee;
+
+  /* Font families */
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ========================================
+   Global Resets & Base Styles
+   ======================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+/* ========================================
+   Scrollbar Styling
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-default);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ========================================
+   Custom Animations
+   ======================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(34, 211, 238, 0.2);
+  }
+  50% {
+    border-color: rgba(34, 211, 238, 0.5);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+.animate-border-glow {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+/* Stagger delays for sequential section reveal */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+
+/* ========================================
+   Glassmorphism Utility
+   ======================================== */
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(26, 35, 50, 0.8), rgba(17, 24, 39, 0.95));
+  border: 1px solid var(--color-border-default);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ========================================
+   Textarea Custom Styles
+   ======================================== */
+
+textarea::placeholder {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+/* ========================================
+   Scanline Overlay (subtle CRT effect)
+   ======================================== */
+
+.scanline-overlay::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(34, 211, 238, 0.04);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ========================================
+   Module 2: Speaking Survival Coach
+   — Emergency / Panic System Styles
+   ======================================== */
+
+@keyframes panicPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.1), inset 0 0 20px rgba(239, 68, 68, 0.02);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(239, 68, 68, 0.25), inset 0 0 40px rgba(239, 68, 68, 0.05);
+  }
+}
+
+@keyframes gradientRotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes phraseGlow {
+  0%, 100% { text-shadow: 0 0 20px rgba(251, 191, 36, 0.3); }
+  50% { text-shadow: 0 0 40px rgba(251, 191, 36, 0.6), 0 0 80px rgba(251, 191, 36, 0.2); }
+}
+
+@keyframes overlayFlash {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes survivalBorderPulse {
+  0%, 100% { border-color: rgba(239, 68, 68, 0.2); }
+  50% { border-color: rgba(239, 68, 68, 0.6); }
+}
+
+.panic-button-wrapper {
+  animation: panicPulse 3s ease-in-out infinite;
+}
+
+.panic-gradient-border {
+  background: linear-gradient(270deg, rgba(239,68,68,0.4), rgba(245,158,11,0.3), rgba(239,68,68,0.4), rgba(167,139,250,0.3));
+  background-size: 300% 300%;
+  animation: gradientRotate 4s ease infinite;
+}
+
+.survival-phrase-glow {
+  animation: phraseGlow 1.5s ease-in-out infinite;
+}
+
+.survival-overlay-bg {
+  animation: overlayFlash 0.3s ease-out forwards;
+}
+
+.survival-border-pulse {
+  animation: survivalBorderPulse 1.5s ease-in-out infinite;
+}
+
+/* ========================================
+   Module 3: Grammar Syntax Debugger
+   — Terminal / Console Styles
+   ======================================== */
+
+.terminal-card {
+  background: linear-gradient(135deg, rgba(10, 15, 26, 0.95), rgba(5, 8, 15, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* ========================================
+   Module 5: Listening Survival Simulator
+   — Equalizer & Trap Word Styles
+   ======================================== */
+
+@keyframes eqBounce {
+  0%   { height: 4px; }
+  100% { height: 28px; }
+}
+
+.trap-word-highlight {
+  display: inline;
+  padding: 1px 6px;
+  margin: 0 2px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  text-shadow: 0 0 8px rgba(249, 115, 22, 0.3);
+}
+
+/* ========================================
+   Module 6: Presentation Stress Simulator
+   — Room Pulse & Start Button Glow
+   ======================================== */
+
+@keyframes roomPulse {
+  0%, 100% { box-shadow: inset 0 0 0 2px rgba(239, 68, 68, 0.0); }
+  50%      { box-shadow: inset 0 0 0 2px rgba(239, 68, 68, 0.25), 0 0 60px rgba(239, 68, 68, 0.06); }
+}
+
+.sim-room-pulse {
+  animation: roomPulse 1.5s ease-in-out infinite;
+  border-radius: 1rem;
+}
+
+.sim-start-btn:hover {
+  box-shadow: 0 0 60px rgba(239, 68, 68, 0.15), 0 0 120px rgba(239, 68, 68, 0.05) !important;
+  border-color: rgba(239, 68, 68, 0.6) !important;
+}
+
+/* ========================================
+   Module 7: Cyber-Vocab Flashcards
+   — 3D Flip Animation
+   ======================================== */
+
+.flashcard-perspective {
+  perspective: 1200px;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard-flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+}
+
+
