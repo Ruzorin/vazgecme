@@ -7,6 +7,7 @@ import OkumaSimulatoru from './components/OkumaSimulatoru'
 import DinlemeSimulatoru from './components/DinlemeSimulatoru'
 import YonetimPaneli from './components/YonetimPaneli'
 import CyberVocabFlashcards from './components/CyberVocabFlashcards'
+import YokdilSimulatoru from './components/YokdilSimulatoru'
 
 const MODULES = [
   { id: 'essay', label: 'Kompozisyon', icon: '01', color: 'var(--color-neon-cyan)' },
@@ -15,6 +16,7 @@ const MODULES = [
   { id: 'reading', label: 'Okuma', icon: '04', color: '#818cf8' },
   { id: 'listening', label: 'Dinleme', icon: '05', color: '#ec4899' },
   { id: 'vocab', label: 'Kelime Kartları', icon: '06', color: '#a78bfa' },
+  { id: 'yokdil', label: 'YÖKDİL', icon: '🎯', color: '#f97316' },
   { id: 'admin', label: 'Yönetim', icon: '⚙', color: '#64748b' },
 ]
 
@@ -121,6 +123,7 @@ function App() {
         {activeModule === 'reading' && <OkumaSimulatoru key="reading" onScore={record} />}
         {activeModule === 'listening' && <DinlemeSimulatoru key="listening" onScore={record} />}
         {activeModule === 'vocab' && <CyberVocabFlashcards key="vocab" onScore={record} />}
+        {activeModule === 'yokdil' && <YokdilSimulatoru key="yokdil" onScore={record} />}
         {activeModule === 'admin' && <YonetimPaneli key="admin" scores={scores} resetScores={resetScores} />}
       </main>
 

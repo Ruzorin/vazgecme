@@ -11,6 +11,13 @@ const DEFAULT_SCORES = {
   listening_gap: { attempts: 0, totalCorrect: 0, totalQuestions: 0, lastDate: null },
   listening_mcq: { attempts: 0, totalCorrect: 0, totalQuestions: 0, lastDate: null },
   vocab: { reviewed: 0, remembered: 0, forgot: 0, lastDate: null },
+  yokdil_vocab: { attempts: 0, totalCorrect: 0, totalQuestions: 0, lastDate: null },
+  yokdil_cloze: { attempts: 0, totalCorrect: 0, totalQuestions: 0, lastDate: null },
+  yokdil_sentence: { attempts: 0, totalCorrect: 0, totalQuestions: 0, lastDate: null },
+  yokdil_translation: { attempts: 0, totalCorrect: 0, totalQuestions: 0, lastDate: null },
+  yokdil_reading: { attempts: 0, totalCorrect: 0, totalQuestions: 0, lastDate: null },
+  yokdil_para_complete: { attempts: 0, totalCorrect: 0, totalQuestions: 0, lastDate: null },
+  yokdil_irrelevant: { attempts: 0, totalCorrect: 0, totalQuestions: 0, lastDate: null },
 }
 
 function loadScores() {
@@ -65,6 +72,13 @@ export function useScoreTracker() {
         case 'reading_text2':
         case 'listening_gap':
         case 'listening_mcq':
+        case 'yokdil_vocab':
+        case 'yokdil_cloze':
+        case 'yokdil_sentence':
+        case 'yokdil_translation':
+        case 'yokdil_reading':
+        case 'yokdil_para_complete':
+        case 'yokdil_irrelevant':
           updated[moduleKey] = {
             attempts: (current.attempts || 0) + 1,
             totalCorrect: (current.totalCorrect || 0) + (data.correct || 0),
