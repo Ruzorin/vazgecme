@@ -1,0 +1,33 @@
+// YÖKDİL Sosyal Bilimler Kelime Listesi — Flashcard formatı
+// word: İngilizce, turkish: Türkçe anlam, gap: boşluklu cümle, full: tam cümle
+
+export const YOKDIL_VOCAB = [
+  { word:'trivial', turkish:'abes, bayağı, cüzi', gap:'The issue seemed ____ compared to the larger crisis.', full:'The issue seemed trivial compared to the larger crisis.' },
+  { word:'ridiculous', turkish:'absürd, saçma', gap:'It would be ____ to ignore the scientific evidence.', full:'It would be ridiculous to ignore the scientific evidence.' },
+  { word:'hasten', turkish:'acele etmek, ettirmek', gap:'The government tried to ____ the reform process.', full:'The government tried to hasten the reform process.' },
+  { word:'rush', turkish:'aceleyle koşmak, hücum', gap:'People ____ to buy supplies before the storm hit.', full:'People rush to buy supplies before the storm hit.' },
+  { word:'attainment', turkish:'başarı, elde etme', gap:'Educational ____ is closely linked to career success.', full:'Educational attainment is closely linked to career success.' },
+  { word:'severe', turkish:'acı, sert, şiddetli', gap:'The country faced ____ economic consequences after the crisis.', full:'The country faced severe economic consequences after the crisis.' },
+  { word:'pain', turkish:'acı, sızı, ağrı', gap:'Chronic ____ affects millions of people worldwide.', full:'Chronic pain affects millions of people worldwide.' },
+  { word:'reveal', turkish:'açığa çıkarmak, ortaya koymak', gap:'The study aimed to ____ the hidden causes of inequality.', full:'The study aimed to reveal the hidden causes of inequality.' },
+  { word:'open-minded', turkish:'açık fikirli', gap:'An ____ approach is essential for academic research.', full:'An open-minded approach is essential for academic research.' },
+  { word:'frank', turkish:'açık sözlü, samimi', gap:'The professor gave a ____ assessment of the student\'s work.', full:'The professor gave a frank assessment of the student\'s work.' },
+  { word:'obvious', turkish:'açık, ortada', gap:'The connection between poverty and crime is ____.', full:'The connection between poverty and crime is obvious.' },
+  { word:'apparent', turkish:'açık, apaçık, belirli', gap:'It became ____ that the policy had failed.', full:'It became apparent that the policy had failed.' },
+  { word:'explicit', turkish:'açık, sarih', gap:'The contract contained ____ instructions about responsibilities.', full:'The contract contained explicit instructions about responsibilities.' },
+  { word:'clarify', turkish:'açıklamak, açıklık getirmek', gap:'The minister was asked to ____ his position on the issue.', full:'The minister was asked to clarify his position on the issue.' },
+  { word:'per head', turkish:'adam başı, kişi başı', gap:'The average income ____ has risen by 10% this year.', full:'The average income per head has risen by 10% this year.' },
+  { word:'dedicate', turkish:'adamak, ithaf etmek', gap:'She decided to ____ her career to public service.', full:'She decided to dedicate her career to public service.' },
+  { word:'candidate', turkish:'aday, namzet', gap:'Each ____ must submit a written proposal for evaluation.', full:'Each candidate must submit a written proposal for evaluation.' },
+  { word:'nomination', turkish:'adaylık', gap:'Her ____ for the award surprised many colleagues.', full:'Her nomination for the award surprised many colleagues.' },
+  { word:'item', turkish:'madde, konu', gap:'The first ____ on the agenda was the budget review.', full:'The first item on the agenda was the budget review.' },
+  { word:'notorious', turkish:'kötü şöhretli', gap:'The region is ____ for its high crime rates.', full:'The region is notorious for its high crime rates.' },
+  { word:'step', turkish:'adım, basamak', gap:'This agreement is an important ____ toward peace.', full:'This agreement is an important step toward peace.' },
+  { word:'pace', turkish:'adım, hız', gap:'The ____ of technological change continues to accelerate.', full:'The pace of technological change continues to accelerate.' },
+  { word:'asset', turkish:'kıymetli şey, varlık', gap:'Education is the most valuable ____ a person can have.', full:'Education is the most valuable asset a person can have.' },
+  { word:'unpardonable', turkish:'affedilemez', gap:'Such neglect of public safety is ____.', full:'Such neglect of public safety is unpardonable.' },
+  { word:'affable', turkish:'dostça, cana yakın', gap:'The manager\'s ____ nature made him popular among staff.', full:'The manager\'s affable nature made him popular among staff.' },
+  { word:'pertain', turkish:'ait olmak, ilgili olmak', gap:'These regulations ____ to all employees in the organization.', full:'These regulations pertain to all employees in the organization.' },
+  { word:'wise', turkish:'akıllı, mantıklı', gap:'It would be ____ to invest in renewable energy now.', full:'It would be wise to invest in renewable energy now.' },
+  { word:'unwise', turkish:'akılsızca', gap:'It is ____ to make decisions without sufficient data.', full:'It is unwise to make decisions without sufficient data.' },
+]
